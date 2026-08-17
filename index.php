@@ -1,3 +1,14 @@
+<?php
+    include"conexao.php";
+
+    $consultaSQL = "select * from tbl_Vagas";
+
+    //Executando a consulta
+    $execConsulta = $cn->query($consultaSQL);
+
+    $vagas = $execConsulta->fetchAll();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
