@@ -9,8 +9,7 @@
     $vagas = $execConsulta->fetchAll(); // metodo em array
 
 // MOTOR DE BUSCA
-$busca = isset($_GET['busca']) ? trim  ($_GET['busca']): "";
-
+$busca = isset($_GET['busca']) ? trim($_GET['busca']): "";
 
 $consultaVaga = "select id,titulo,localizacao,salario 
                 from tbl_Vagas where status = 'ativa'
@@ -18,10 +17,9 @@ $consultaVaga = "select id,titulo,localizacao,salario
                 or descricao like :buscaVaga";
             
 $preparaVaga = $cn->prepare($consultaVaga);
-$preparaVaga->bindValue('buscaVaga' , '%busca%');
+$preparaVaga->bindValue(':buscaVaga' , "%$busca%");
 $preparaVaga->execute();
-$vagas = $preparaVaga-> fetchALL;
-
+$vagas = $preparaVaga->fetchAll();
 ?> 
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -94,7 +92,7 @@ $vagas = $preparaVaga-> fetchALL;
 
 
                 <!-- O link levará para a página de detalhes/candidatura passando o ID via GET -->
-                <a href="vaga.php?id=<?= $vaga['id'] ?>" class="btn-apply">Ver Detalhes</a>
+                <a href="vagas.php?id=<?= $vaga['id'] ?>" class="btn-apply">Ver Detalhes</a>
 
 
             </article>
