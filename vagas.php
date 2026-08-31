@@ -5,7 +5,7 @@
     $mostrarVaga = $cn->prepare($vagaSQL);
     $mostrarVaga->bindValue(':idteste' , "$codVaga", PDO::PARAM_INT);
     $mostrarVaga->execute();
-    $vaga = $mostrarVaga->fetchAll();
+    $vaga = $mostrarVaga->fetch();
 
     if (!$vaga){
         header("location:index.php");
@@ -44,13 +44,10 @@
         <a href="index.php" class="btn-back">&larr; Voltar para as vagas</a>
 
         <article class="job-detail-card">
-            <?php 
-                foreach($vaga as $vagas):
-            ?>
             <!-- Cabeçalho do Card -->
             <header class="job-detail-header">
-                <span class="badge">Vaga <?= htmlspecialchars($vagas['status']) ?></span>
-                <h1 class="job-detail-title"> <?= htmlspecialchars($vagas['titulo']) ?></h1>
+                <span class="badge">Vaga <?= htmlspecialchars($vaga['status']) ?></span>
+                <h1 class="job-detail-title"> <?= htmlspecialchars($vaga['titulo']) ?></h1>
                 <p class="job-detail-company">Verificar na intrevista</p>
             </header>
 
@@ -58,15 +55,15 @@
             <div class="job-meta-grid">
                 <div class="job-meta-item">
                     <span class="meta-label">Localização</span>
-                    <span class="meta-value"><?= htmlspecialchars($vagas['localizacao']) ?></span>
+                    <span class="meta-value"><?= htmlspecialchars($vaga['localizacao']) ?></span>
                 </div>
                 <div class="job-meta-item">
                     <span class="meta-label">Salário</span>
-                    <span class="meta-value">R$ <?= number_format($vagas['salario'],2,",",".") ?></span>
+                    <span class="meta-value">R$ <?= number_format($vaga['salario'],2,",",".") ?></span>
                 </div>
                 <div class="job-meta-item">
                     <span class="meta-label">Publicado em</span>
-                    <span class="meta-value"><?= htmlspecialchars($vagas['data_criacao']) ?></span>
+                    <span class="meta-value"><?= htmlspecialchars($vaga['data_criacao']) ?></span>
                 </div>
             </div>
 
@@ -75,17 +72,15 @@
             <!-- Descrição Completa -->
             <section class="job-section">
                 <h2>Descrição da Vaga</h2>
-                <p><?= htmlspecialchars($vagas['descricao']) ?></p>
+                <p><?= htmlspecialchars($vaga['descricao']) ?></p>
             </section>
 
             <!-- Requisitos do Cargo -->
             <section class="job-section">
                 <h2>Requisitos Necessários</h2>
-                <p><?= htmlspecialchars($vagas['requisitos']) ?></p>
+                <p><?= htmlspecialchars($vaga['requisitos']) ?></p>
             </section>
                 
-            <?php endforeach;
-            ?>
             <!-- Caixa de Ação -->
             <div class="job-action-box">
                 <!-- O ID da vaga é repassado via GET para o fluxo de candidatura/login -->
