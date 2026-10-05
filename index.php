@@ -86,7 +86,7 @@ $vagas = $preparaVaga->fetchAll();
                     <h3 class="job-title"><?= htmlspecialchars($vaga['titulo']); ?></h3>
                     <div class="job-details">
                         <p><strong>Localização:</strong> <?= htmlspecialchars($vaga['localizacao']); ?> </p>
-                        <p><strong>Salário:</strong><?= htmlspecialchars($vaga['salario']) ;?> </p>
+                        <p><strong>Salário:</strong> <?= htmlspecialchars($vaga['salario']) ;?> </p>
                     </div>
                 </div>      
 

@@ -2,7 +2,7 @@
     $servidor = "localhost"; // servidor local
     $usuario = "root"; // usuario do servidor mysql
     $senha = ""; // senha do servidor mysql
-    $banco = "db_agencia_empregos"; // nome do banco
+    $banco = "db_Agencia_Empregos"; // nome do banco
 
 try
 {

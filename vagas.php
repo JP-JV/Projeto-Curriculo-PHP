@@ -48,7 +48,7 @@
             <header class="job-detail-header">
                 <span class="badge">Vaga <?= htmlspecialchars($vaga['status']) ?></span>
                 <h1 class="job-detail-title"> <?= htmlspecialchars($vaga['titulo']) ?></h1>
-                <p class="job-detail-company">Verificar na intrevista</p>
+                <p class="job-detail-company">Oculto</p>
             </header>
 
             <!-- Painel de Metadados (Grade com Informações Rápidas) -->
@@ -63,7 +63,7 @@
                 </div>
                 <div class="job-meta-item">
                     <span class="meta-label">Publicado em</span>
-                    <span class="meta-value"><?= htmlspecialchars($vaga['data_criacao']) ?></span>
+                    <span class="meta-value"><?= date('d/m/Y', strtotime($vaga['data_criacao'])) ?></span>
                 </div>
             </div>
 
